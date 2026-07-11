@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio. 2026 — Doğukan Şahin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #0d0d0d;
+    --white: #f0ede8;
+    --gray: #888;
+    --light-gray: #1a1a1a;
+    --border: rgba(240,237,232,0.12);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+
+  .hero { position: relative; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center top;
+    opacity: 0.15; z-index: 0;
+  }
+  .hero > * { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    border-bottom: 1px solid var(--border);
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(8px);
+  }
+  nav .logo {
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); text-decoration: none;
+    cursor: pointer;
+  }
+  nav .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  nav .nav-links a {
+    font-size: 13px; color: var(--gray);
+    text-decoration: none; letter-spacing: 0.06em;
+    cursor: pointer; transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--white); }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex;
+    flex-direction: column; justify-content: flex-end;
+    padding: 0 3rem 4rem;
+    border-bottom: 1px solid var(--border);
+    padding-top: 80px;
+  }
+  .hero-title {
+    font-size: clamp(72px, 14vw, 180px);
+    font-weight: 700; line-height: 0.9;
+    letter-spacing: -0.03em; color: var(--white);
+  }
+  .hero-title .dot { color: var(--gray); }
+  .hero-meta {
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .hero-meta .name { font-size: 15px; font-weight: 400; color: var(--gray); letter-spacing: 0.04em; }
+  .hero-meta .year { font-size: 15px; color: var(--gray); }
+
+  /* ABOUT */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-left { padding: 5rem 3rem; border-right: 1px solid var(--border); }
+  .about-statement {
+    font-size: clamp(24px, 3vw, 38px); font-weight: 500;
+    line-height: 1.25; letter-spacing: -0.02em; max-width: 520px;
+  }
+  .about-right { padding: 5rem 3rem; }
+  .about-bio { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
+  .tools-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1rem; }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.06em;
+    color: var(--white); border: 1px solid var(--border);
+    border-radius: 10px; padding: 8px 16px; text-transform: uppercase;
+    background: var(--light-gray); transition: border-color 0.2s, background 0.2s;
+  }
+  .tool-tag:hover { border-color: rgba(240,237,232,0.4); background: #222; }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 2rem 3rem; border-bottom: 1px solid var(--border);
+  }
+  .section-header .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
+  .section-header .count { font-size: 11px; color: var(--gray); }
+
+  /* PROJECTS */
+  .project {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    min-height: 520px; cursor: pointer; transition: background 0.3s;
+  }
+  .project:hover { background: #111; }
+  .project.reverse { direction: rtl; }
+  .project.reverse > * { direction: ltr; }
+  .project-info {
+    padding: 4rem 3rem; display: flex;
+    flex-direction: column; justify-content: space-between;
+    border-right: 1px solid var(--border);
+  }
+  .project.reverse .project-info { border-right: none; border-left: 1px solid var(--border); }
+  .project-num { font-size: clamp(48px, 7vw, 96px); font-weight: 700; line-height: 1; color: #2a2a2a; letter-spacing: -0.03em; }
+  .project-title { font-size: clamp(22px, 3vw, 36px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .project-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 340px; margin-bottom: 1.5rem; }
+  .project-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .project-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); border: 1px solid var(--border); border-radius: 4px; padding: 4px 10px; }
+  .project-arrow { font-size: 24px; color: var(--gray); margin-top: auto; align-self: flex-end; transition: color 0.2s; }
+  .project:hover .project-arrow { color: var(--white); }
+  .project-visual {
+    background: var(--light-gray); display: flex;
+    align-items: center; justify-content: center;
+    min-height: 400px; position: relative; overflow: hidden;
+  }
+  .placeholder-inner {
+    width: calc(100% - 40px); height: calc(100% - 40px);
+    border: 1px dashed #2a2a2a; display: flex;
+    flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  }
+  .placeholder-text { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #333; }
+  .add-icon { font-size: 28px; color: #2a2a2a; }
+  .project-visual img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+  /* SHOWCASE TICKER */
+  .showcase { padding: 2rem 0; border-bottom: 1px solid var(--border); overflow: hidden; }
+  .showcase-header { padding: 0 3rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .showcase-header span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
+  .showcase-btn {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--white); border: 1px solid var(--border); background: none;
+    padding: 8px 18px; border-radius: 20px; cursor: pointer; transition: background 0.2s, color 0.2s;
+  }
+  .showcase-btn:hover { background: var(--white); color: var(--black); }
+  .showcase-track-wrap { overflow: hidden; position: relative; }
+  .showcase-track-wrap::before,
+  .showcase-track-wrap::after {
+    content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+  }
+  .showcase-track-wrap::before { left:0; background: linear-gradient(to right, var(--black), transparent); }
+  .showcase-track-wrap::after  { right:0; background: linear-gradient(to left, var(--black), transparent); }
+  .showcase-track { display:flex; gap:10px; width:max-content; animation: ticker 60s linear infinite; }
+  .showcase-track:hover { animation-play-state: paused; }
+  @keyframes ticker { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+  .showcase-item {
+    width: 260px; height: 180px; flex-shrink: 0;
+    border-radius: 8px; overflow: hidden; cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s; position: relative;
+  }
+  .showcase-item:hover { transform: scale(1.04); }
+  .showcase-item img { width:100%; height:100%; object-fit:cover; display:block; }
+  .item-inner {
+    width: calc(100% - 24px); height: calc(100% - 24px);
+    border: 1px dashed #2a2a2a; display: flex;
+    flex-direction: column; align-items: center; justify-content: center; gap: 6px; border-radius: 4px;
+  }
+  .item-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f2f2f; }
+
+  /* GALERI SAYFASI */
+  .galeri-overlay {
+    display: none; position: fixed; inset: 0; z-index: 2000;
+    background: var(--black); overflow-y: auto;
+  }
+  .galeri-overlay.active { display: block; }
+  .galeri-header {
+    position: sticky; top: 0; z-index: 10;
+    padding: 1.5rem 3rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--black);
+  }
+  .galeri-header h2 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
+  .galeri-close {
+    width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+    background: none; color: var(--white); cursor: pointer; font-size: 18px;
+    display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+  }
+  .galeri-close:hover { background: #222; }
+  .galeri-grid {
+    padding: 2rem 3rem;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  }
+  .galeri-cell {
+    aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; cursor: pointer;
+    background: var(--light-gray); transition: transform 0.2s, opacity 0.2s;
+  }
+  .galeri-cell:hover { transform: scale(1.03); opacity: 0.85; }
+  .galeri-cell img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 3000;
+    background: var(--black); align-items: center; justify-content: center;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid #444;
+    background: none; color: #fff; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-prev, .lightbox-next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid #444;
+    background: none; color: #fff; font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lightbox-prev { left: 1.5rem; }
+  .lightbox-next { right: 1.5rem; }
+
+  /* CONTACT */
+  .contact { padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
+  .contact-heading { font-size: clamp(36px, 6vw, 80px); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
+  .contact-heading .muted { color: #333; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+  .contact-value { font-size: 15px; color: var(--white); }
+
+  footer {
+    padding: 1.5rem 3rem; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-size: 12px; color: var(--gray); letter-spacing: 0.06em; }
+
+  /* ===== DETAIL PAGE ===== */
+  #detail-page {
+    padding-top: 80px;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+  .detail-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 1.5rem 3rem; font-size: 13px; color: var(--gray);
+    letter-spacing: 0.06em; cursor: pointer; border-bottom: 1px solid var(--border);
+    width: 100%; transition: color 0.2s;
+    background: none; border-left: none; border-right: none; border-top: none;
+    text-align: left;
+  }
+  .detail-back:hover { color: var(--white); }
+  .detail-back span { font-size: 18px; }
+
+  .detail-hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border); min-height: 560px;
+  }
+  .detail-left {
+    padding: 5rem 3rem; display: flex;
+    flex-direction: column; justify-content: space-between;
+    border-right: 1px solid var(--border);
+  }
+  .detail-num { font-size: clamp(64px, 10vw, 140px); font-weight: 700; line-height: 1; color: #1e1e1e; letter-spacing: -0.04em; }
+  .detail-title { font-size: clamp(32px, 5vw, 64px); font-weight: 700; line-height: 1; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+  .detail-subtitle { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 400px; margin-bottom: 2rem; }
+  .detail-meta { display: flex; gap: 2rem; flex-wrap: wrap; }
+  .detail-meta-item { }
+  .detail-meta-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-bottom: 4px; }
+  .detail-meta-value { font-size: 14px; color: var(--white); }
+  .detail-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.5rem; }
+  .detail-right {
+    background: var(--light-gray); display: flex;
+    align-items: center; justify-content: center; position: relative; overflow: hidden;
+  }
+  .detail-right img { width: 100%; height: 100%; object-fit: cover; }
+  .detail-right .placeholder-inner { width: calc(100% - 48px); height: calc(100% - 48px); }
+
+  .detail-body { padding: 4rem 3rem; border-bottom: 1px solid var(--border); }
+  .detail-body h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+  .detail-body p { font-size: 16px; color: var(--white); line-height: 1.85; max-width: 680px; }
+
+  .detail-prompt { padding: 3rem; border-bottom: 1px solid var(--border); background: #111; }
+  .detail-prompt h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+  .prompt-item { margin-bottom: 1.25rem; }
+  .prompt-item-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+  .prompt-item-text { font-size: 13px; color: #999; line-height: 1.8; border-left: 2px solid #2a2a2a; padding-left: 1.1rem; font-family: monospace; max-width: 760px; }
+  .ai-tags-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid #1e1e1e; }
+  .ai-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 6px; }
+  .ai-tag.claude { background: #1a1a2e; color: #7b8cde; border: 1px solid #2a2a4a; }
+  .ai-tag.gemini { background: #1a2a1a; color: #5dba6e; border: 1px solid #2a3a2a; }
+  .ai-tag.notebooklm { background: #1a1a1a; color: #e8a44f; border: 1px solid #3a2a1a; }
+  .ai-tag.gamma { background: #1e1a2a; color: #a78bfa; border: 1px solid #3a2a4a; }
+  .ai-tag.chatgpt { background: #0d1f0d; color: #4caf7d; border: 1px solid #1a3a1a; }
+
+  .detail-gallery { padding: 3rem; border-bottom: 1px solid var(--border); }
+  .detail-gallery h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+  .detail-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .detail-gallery-item {
+    background: var(--light-gray); aspect-ratio: 16/9;
+    border-radius: 8px; display: flex; align-items: center;
+    justify-content: center; overflow: hidden; position: relative;
+  }
+  .detail-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
+  .detail-gallery-item .item-inner { width: calc(100% - 24px); height: calc(100% - 24px); }
+
+  .detail-pdf { padding: 3rem; border-bottom: 1px solid var(--border); }
+  .detail-pdf h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+  .pdf-viewer iframe { width: 100%; height: 600px; border: none; border-radius: 8px; background: #fff; }
+  .project-visual img.contain { object-fit: contain; background: #0d0d0d; padding: 1rem; }
+  .detail-video h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+  .video-placeholder {
+    background: var(--light-gray); aspect-ratio: 16/9; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .video-inner {
+    width: calc(100% - 32px); height: calc(100% - 32px);
+    border: 1px dashed #2a2a2a; border-radius: 4px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  }
+  .video-play { font-size: 36px; color: #2f2f2f; }
+  .video-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: #2f2f2f; }
+
+  .detail-nav {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .detail-nav-item {
+    padding: 2rem 3rem; cursor: pointer;
+    transition: background 0.2s; display: flex;
+    flex-direction: column; gap: 6px;
+  }
+  .detail-nav-item:hover { background: #111; }
+  .detail-nav-item:first-child { border-right: 1px solid var(--border); }
+  .detail-nav-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+  .detail-nav-title { font-size: 18px; font-weight: 700; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav .nav-links { gap: 1.5rem; }
+    .hero { padding: 80px 1.5rem 3rem; }
+    .about { grid-template-columns: 1fr; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+    .about-right { padding: 3rem 1.5rem; }
+    .project { grid-template-columns: 1fr; }
+    .project.reverse { direction: ltr; }
+    .project-info { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
+    .project.reverse .project-info { border-left: none; border-bottom: 1px solid var(--border); }
+    .project-visual { min-height: 280px; }
+    .showcase { padding: 1.5rem; }
+    .showcase-grid { grid-template-columns: repeat(2, 1fr); }
+    .section-header { padding: 1.5rem; }
+    .contact { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 8px; text-align: center; }
+    .detail-hero { grid-template-columns: 1fr; }
+    .detail-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+    .detail-right { min-height: 260px; }
+    .detail-body, .detail-gallery, .detail-video { padding: 2rem 1.5rem; }
+    .detail-gallery-grid { grid-template-columns: 1fr; }
+    .detail-nav { grid-template-columns: 1fr; }
+    .detail-nav-item:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .detail-nav-item { padding: 1.5rem; }
+    .detail-back { padding: 1.25rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" onclick="showHome()">Doğukan Şahin</a>
+  <ul class="nav-links">
+    <li><a onclick="showHome(); scrollToSection('works')">İşler</a></li>
+    <li><a onclick="showHome(); scrollToSection('about')">Hakkında</a></li>
+    <li><a onclick="showHome(); scrollToSection('contact')">İletişim</a></li>
+  </ul>
+</nav>
+
+<!-- ========== ANA SAYFA ========== -->
+<div id="home-page" class="page active">
+
+  <section class="hero">
+    <div class="hero-bg" style="background-image:url('p6_cover.png')"></div>
+    <h1 class="hero-title">Portfolio<span class="dot">.</span></h1>
+    <div class="hero-meta">
+      <span class="name">Doğukan Şahin — Görsel İletişim Tasarımı · Mehmet Akif Ersoy Üniversitesi</span>
+      <span class="year">2026</span>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-left">
+      <p class="about-statement">Tasarım benim için görünmezi görünür kılma biçimi — her zaman anlamlı olmalı.</p>
+    </div>
+    <div class="about-right">
+      <p class="about-bio">Mehmet Akif Ersoy Üniversitesi Görsel İletişim Tasarımı öğrencisiyim. Grafik tasarım, kimlik, tipografi ve dijital medya üzerine çalışıyorum. Her projeye kendine özgü bir ses kazandırmaya inanıyorum.</p>
+      <p class="tools-label">Araçlar</p>
+      <div class="tools-grid">
+        <span class="tool-tag">Illustrator</span>
+        <span class="tool-tag">Photoshop</span>
+        <span class="tool-tag">After Effects</span>
+        <span class="tool-tag">Framer</span>
+        <span class="tool-tag">Figma</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-header" id="works">
+    <span class="label">Seçki</span>
+    <span class="count">07 proje</span>
+  </div>
+
+  <article class="project" onclick="showDetail(0)">
+    <div class="project-info">
+      <span class="project-num">01.</span>
+      <div>
+        <h2 class="project-title">FoxLike Crunch</h2>
+        <p class="project-desc">Tahıl markası için AI destekli maskot ve ambalaj tasarımı. Karakter kimliği, ürün görselleri ve marka bütünlüğü.</p>
+        <div class="project-tags">
+          <span class="project-tag">Branding</span>
+          <span class="project-tag">Maskot</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="cover.png" alt="FoxLike Crunch maskot">
+    </div>
+  </article>
+
+  <article class="project reverse" onclick="showDetail(1)">
+    <div class="project-info">
+      <span class="project-num">02.</span>
+      <div>
+        <h2 class="project-title">Apple Broşür & Afiş</h2>
+        <p class="project-desc">iPhone 17 Pro Max ve iPad Pro için AI ile üretilmiş reklam afişleri ve ürün broşürü tasarımları.</p>
+        <div class="project-tags">
+          <span class="project-tag">Print</span>
+          <span class="project-tag">Reklam</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p2_cover.png" alt="Apple reklam afişi">
+    </div>
+  </article>
+
+  <article class="project" onclick="showDetail(2)">
+    <div class="project-info">
+      <span class="project-num">03.</span>
+      <div>
+        <h2 class="project-title">2025 UI/UX Başarı Rehberi</h2>
+        <p class="project-desc">Estetikten sistemlere bütünsel dijital deneyimler. NotebookLM ile üretilmiş 15 sayfalık kapsamlı tasarım rehberi.</p>
+        <div class="project-tags">
+          <span class="project-tag">UI/UX</span>
+          <span class="project-tag">Araştırma</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p3_cover.png" alt="UI/UX Rehberi" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </article>
+
+  <article class="project reverse" onclick="showDetail(3)">
+    <div class="project-info">
+      <span class="project-num">04.</span>
+      <div>
+        <h2 class="project-title">Steam Pitch Deck</h2>
+        <p class="project-desc">Oyun dünyasının dijital kalbi. 38 kaynak üzerinden NotebookLM ile içerik üretildi, Gamma ile görsel sunuma dönüştürüldü.</p>
+        <div class="project-tags">
+          <span class="project-tag">Pitch Deck</span>
+          <span class="project-tag">Sunum</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p4_cover.png" alt="Steam Pitch Deck kapak">
+    </div>
+  </article>
+
+  <article class="project" onclick="showDetail(4)">
+    <div class="project-info">
+      <span class="project-num">05.</span>
+      <div>
+        <h2 class="project-title">Mockup & Watermark</h2>
+        <p class="project-desc">ChatGPT ile billboard mockup üretimi ve Gemini ile watermark temizleme çalışmaları.</p>
+        <div class="project-tags">
+          <span class="project-tag">Mockup</span>
+          <span class="project-tag">Watermark</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p1_billboard.png" alt="Billboard Mockup">
+    </div>
+  </article>
+
+  <article class="project reverse" onclick="showDetail(5)">
+    <div class="project-info">
+      <span class="project-num">06.</span>
+      <div>
+        <h2 class="project-title">AI Font Tasarımı</h2>
+        <p class="project-desc">Yapay zeka ile üretilmiş iki özgün tipografi: gotik blackletter ve holografik 3D balon font.</p>
+        <div class="project-tags">
+          <span class="project-tag">Tipografi</span>
+          <span class="project-tag">Font</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p6_cover.png" alt="AI Font Tasarımı">
+    </div>
+  </article>
+
+  <article class="project" onclick="showDetail(6)">
+    <div class="project-info">
+      <span class="project-num">07.</span>
+      <div>
+        <h2 class="project-title">Oyun Gelistirmede YZ</h2>
+        <p class="project-desc">Grup calismasi: AI araclariyla oyun prototipi. NotebookLM ile 50 kaynak, Gamma ile sunuma dönüstürüldü.</p>
+        <div class="project-tags">
+          <span class="project-tag">Oyun</span>
+          <span class="project-tag">Prototip</span>
+          <span class="project-tag">AI</span>
+        </div>
+      </div>
+      <span class="project-arrow">→</span>
+    </div>
+    <div class="project-visual">
+      <img src="p7_cover.png" alt="Oyun Gelistirmede YZ">
+    </div>
+  </article>
+
+  <div class="section-header">
+    <span class="label">Vitrin</span>
+    <span class="count">Ek görseller</span>
+  </div>
+  <section class="showcase">
+    <div class="showcase-header">
+      <span>Tüm Çalışmalar</span>
+      <button class="showcase-btn" onclick="openGaleri()">Tümünü Gör →</button>
+    </div>
+    <div class="showcase-track-wrap">
+      <div class="showcase-track" id="showcaseTrack"></div>
+    </div>
+  </section>
+
+  <!-- GALERİ SAYFASI -->
+  <div class="galeri-overlay" id="galeriOverlay">
+    <div class="galeri-header">
+      <h2>Tüm Çalışmalar</h2>
+      <button class="galeri-close" onclick="closeGaleri()">×</button>
+    </div>
+    <div class="galeri-grid" id="galeriGrid"></div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">×</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
+  </div>
+
+  <section class="contact" id="contact">
+    <div>
+      <h2 class="contact-heading">
+        <span class="muted">Birlikte</span><br>
+        çalışalım<span style="color:#333">.</span>
+      </h2>
+    </div>
+    <div class="contact-details">
+      <div>
+        <p class="contact-label">E-posta</p>
+        <p class="contact-value">dqannorth@gmail.com</p>
+      </div>
+      <div>
+        <p class="contact-label">Üniversite</p>
+        <p class="contact-value">Mehmet Akif Ersoy Üniversitesi<br>Görsel İletişim Tasarımı</p>
+      </div>
+      <div>
+        <p class="contact-label">Bağlantılar</p>
+        <p class="contact-value">Behance &nbsp;·&nbsp; Instagram</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Doğukan Şahin</p>
+    <p>Görsel İletişim Tasarımı · Mehmet Akif Ersoy Üniversitesi</p>
+  </footer>
+
+</div><!-- /home-page -->
+
+<!-- ========== DETAY SAYFASI ========== -->
+<div id="detail-page" class="page">
+
+  <button class="detail-back" onclick="showHome()">
+    <span>←</span> Tüm işler
+  </button>
+
+  <div class="detail-hero">
+    <div class="detail-left">
+      <span class="detail-num" id="d-num">01.</span>
+      <div>
+        <h1 class="detail-title" id="d-title">Proje Başlığı</h1>
+        <p class="detail-subtitle" id="d-subtitle">Projenin kısa açıklaması. Konsept, hedef kitle ve tasarım yaklaşımından bahsedebilirsin.</p>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <p class="detail-meta-label">Yıl</p>
+            <p class="detail-meta-value" id="d-year">2026</p>
+          </div>
+          <div class="detail-meta-item">
+            <p class="detail-meta-label">Disiplin</p>
+            <p class="detail-meta-value" id="d-discipline">Branding</p>
+          </div>
+          <div class="detail-meta-item">
+            <p class="detail-meta-label">Araçlar</p>
+            <p class="detail-meta-value" id="d-tools">Illustrator, Photoshop</p>
+          </div>
+        </div>
+        <div class="detail-tags" id="d-tags"></div>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="placeholder-inner">
+        <span class="add-icon">+</span>
+        <span class="placeholder-text">Ana görsel ekle</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-body">
+    <h3>Proje Hakkında</h3>
+    <p id="d-body">Bu alana projenin detaylı açıklamasını yazabilirsin.</p>
+  </div>
+
+  <div class="detail-prompt" id="detail-prompt-section">
+    <h3>Kullanılan Promptlar</h3>
+    <div id="d-prompts-list"></div>
+    <div class="ai-tags-row" id="d-ai-tags"></div>
+  </div>
+
+  <div class="detail-gallery">
+    <h3>Görseller</h3>
+    <div class="detail-gallery-grid">
+      <!-- JS tarafından dinamik olarak doldurulur -->
+    </div>
+  </div>
+
+  <div class="detail-video">
+    <h3>Video</h3>
+    <div class="video-placeholder">
+      <div class="video-inner">
+        <span class="video-play">▷</span>
+        <span class="video-label">Video ekle</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-pdf" id="detail-pdf-section">
+    <h3>PDF Döküman</h3>
+    <div class="pdf-viewer" id="d-pdf-viewer"></div>
+  </div>
+
+  <div class="detail-nav">
+    <div class="detail-nav-item" id="prev-project" onclick="navProject(-1)">
+      <span class="detail-nav-label">← Önceki proje</span>
+      <span class="detail-nav-title" id="prev-title">—</span>
+    </div>
+    <div class="detail-nav-item" id="next-project" onclick="navProject(1)" style="text-align:right">
+      <span class="detail-nav-label">Sonraki proje →</span>
+      <span class="detail-nav-title" id="next-title">—</span>
+    </div>
+  </div>
+
+</div><!-- /detail-page -->
+
+<script>
+const projects = [
+  {
+    num: '01.',
+    title: 'FoxLike Crunch',
+    subtitle: 'Tahıl markası için AI ile üretilmiş maskot karakteri ve ambalaj kimliği.',
+    body: 'FoxLike Crunch, bir tahıl markası için sıfırdan oluşturulan maskot ve ambalaj tasarımı projesidir. Karakterin farklı pozlarda tutarlı bir kimliğe sahip olması ve ürün kutusuyla bütünleşik bir marka dili oluşturulması hedeflendi.',
+    year: '2026',
+    discipline: 'Branding · AI',
+    tools: 'Claude AI, Gemini',
+    tags: ['Branding', 'Maskot', 'AI'],
+    aiTags: ['Claude AI', 'Gemini'],
+    cover: 'cover.png',
+    gallery: ['gallery1.png', 'gallery2.png', 'gallery3.png'],
+    prompts: [
+      { label: 'Maskot karakter', text: 'A cute plush fox mascot character standing upright, soft felt texture, orange and brown colors, white belly with "FoxLike" embroidered text, black round eyes, pink nose, fluffy tail, minimalist toy aesthetic, studio white background, 3D render, high detail' },
+      { label: 'Ürün kutusuyla poz', text: 'Plush fox toy sitting next to a cereal box labeled "FOX-O\'s Crunchy & Clever", Wise Forest Foods branding, cartoon fox illustration on box holding a spoon with milk and cereal, warm beige and orange color palette, product photography style, soft white background' },
+      { label: 'Kutudan fırlama', text: 'Cute plush fox mascot jumping out of an open cereal box labeled "FoxLike Crunch", arms raised in excitement, cereal pieces flying around, felt texture, cheerful expression, warm studio lighting, white background, 3D render' },
+      { label: 'Kase tutan poz', text: 'Plush fox mascot holding a small blue ceramic bowl of cereal with a spoon, smiling expression, soft felt material, orange fur with white belly, "FoxLike" embroidered on chest, clean white-gray background, product mascot photography' }
+    ]
+  },
+  {
+        num: '02.',
+    title: 'Apple Broşür & Afiş',
+    subtitle: 'iPhone 17 Pro Max, iPad Pro ve iPhone 17 Air için AI ile üretilmiş reklam afişleri ve broşür.',
+    body: "Apple ürünleri için yapay zeka ile üretilmiş reklam görselleri ve broşür tasarımı projesi. iPhone 17 Pro Max, iPad Pro ve iPhone 17 Air olmak üzere üç farklı ürün için Apple'ın minimal görsel diline sadık kalınarak tasarlandı.",
+    year: '2026',
+    discipline: 'Print · Digital',
+    tools: 'Claude AI, Gemini',
+    tags: ['Print', 'Reklam', 'AI'],
+    aiTags: ['Claude AI', 'Gemini'],
+    coverFit: 'contain', cover: 'p2_cover.png',
+    galleryFit: 'contain',
+    gallery: ['p2_g1.png', 'p2_g2.png', 'p2_g3.png'],
+    prompts: [
+      { label: 'iPhone 17 Pro Max kapak afişi', text: 'iPhone 17 Pro Max promotional poster, extreme close-up of triple camera system from top-right corner angle, titanium silver finish, soft warm-to-cool gradient background, large bold headline More than anything bottom left, Apple logo top right, minimal Apple aesthetic, ultra-realistic product render' },
+      { label: 'Broşür iç sayfa', text: 'Apple product brochure spread layout, left page Next-Generation Pro Camera headline with camera close-up and specs 48MP Fusion Sensor 5x Optical Telephoto Zoom ProRes Video Production, right page Unprecedented Power headline with A19 Pro chip 3D render glowing, clean white background, SF Pro typography' },
+      { label: 'iPad Pro afişi', text: 'iPad Pro M4 advertisement poster portrait orientation, headline Your next computer is not a computer, iPad Pro center with Apple Pencil, screen showing soft blue watercolor brushstroke, three feature columns M4 chip Ultra Retina XDR Apple Intelligence, light gray background, Apple aesthetic' },
+      { label: 'iPhone 17 Air afişi', text: 'iPhone 17 Air product poster, pure white background, large thin elegant headline iPhone 17 Air, tagline Thinner than a thought, side profile view showing extreme 5mm thinness, feature text 5mm Titanium All-day battery, minimalist Apple typography, generous white space' }
+    ]
+  },
+  {
+    num: '03.',
+    title: '2025 UI/UX Başarı Rehberi',
+    subtitle: 'Estetikten sistemlere bütünsel dijital deneyimler — 15 sayfalık kapsamlı tasarım rehberi.',
+    body: "UI/UX tasarımının 2025 paradigmasını ele alan bu rehber; erişilebilirlik (WCAG 2.2), tasarım token'ları, Glassmorphism vs Neumorphism, Bento Grid, kültürel renk psikolojisi ve yapay zeka destekli kişiselleştirme konularını kapsamaktadır. Sadece güzel görünen değil; akıllı, sistematik ve herkesi kucaklayan arayüzler tasarlamak üzerine.",
+    year: '2025',
+    discipline: 'UI/UX · Araştırma',
+    tools: 'NotebookLM',
+    tags: ['UI/UX', 'Araştırma', 'AI'],
+    aiTags: ['NotebookLM'],
+    cover: null,
+    gallery: [null, null, null],
+    cover: 'p3_cover.png',
+    coverFit: 'cover',
+    gallery: ['p3_g1.png', 'p3_g2.png', 'p3_g3.png', 'p3_g4.png', 'p3_g5.png'],
+    cover: 'p3_cover.png',
+    coverFit: 'cover',
+    gallery: ['p3_g1.png', 'p3_g2.png', 'p3_g3.png', 'p3_g4.png', 'p3_g5.png'],
+    pdf: 'uiux_rehber.pdf',
+    prompts: [
+      { label: 'NotebookLM ile içerik üretimi', text: 'Bu rehber Google NotebookLM kullanılarak oluşturulmuştur. Kaynak materyaller yüklenerek yapay zekanın içeriği analiz etmesi, organize etmesi ve görsel sunuma uygun slaylar üretmesi sağlanmıştır. Çıktılar: 2025 tasarım paradigmaları, erişilebilirlik kuralları, renk psikolojisi ve motion UI konularını kapsayan 15 sayfalık interaktif rehber.' }
+    ]
+  },
+  {
+    num: '04.',
+    title: 'Steam Pitch Deck',
+    subtitle: 'Oyun dünyasının dijital kalbi — Steam ekosistemini anlatan kapsamlı sunum.',
+    body: 'Steam platformunun pazar büyüklüğü, ürün ekosistemi, Steam Atölyesi, Steam Deck ve küresel büyüme verilerini kapsayan pitch deck çalışması. Sunum, belirli bir prompt kullanılmadan NotebookLM üzerinde 38 farklı kaynak analiz edilerek içerik oluşturulmuş, ardından Gamma ile görsel slaytlara dönüştürülmüştür.',
+    year: '2026',
+    discipline: 'Sunum · Araştırma',
+    tools: 'Claude, NotebookLM, Gemini, Gamma',
+    tags: ['Pitch Deck', 'Sunum', 'AI'],
+    aiTags: ['Claude', 'NotebookLM', 'Gemini', 'Gamma'],
+    cover: 'p4_cover.png',
+    coverFit: 'cover',
+    gallery: ['p4_g1.png', 'p4_g2.png', 'p4_g3.png', 'p4_g4.png', 'p4_g5.png', 'p4_g6.png'],
+    prompts: [
+      { label: 'Üretim Yöntemi', text: 'Bu sunum belirli bir prompt kullanılmadan oluşturulmuştur. İçerik; NotebookLM üzerinde 38 farklı kaynak (makaleler, Steam istatistikleri, oyun sektörü raporları) yüklenerek yapay zekanın bu kaynakları analiz etmesi ve sentezlemesi yöntemiyle üretilmiştir. Elde edilen içerik Gamma platformunda görsel slaytlara dönüştürülmüştür.' }
+    ]
+  },
+  {
+    num: '05.',
+    title: 'Mockup & Watermark',
+    subtitle: 'ChatGPT ile billboard mockup üretimi ve Gemini ile watermark temizleme çalışmaları.',
+    body: 'Bu projede iki farklı AI görevi ele alındı: ChatGPT ile gerçekçi billboard ürün mockup görseli oluşturuldu; Gemini ile ise stok fotoğraf üzerindeki watermarklar kaldırılarak temiz bir çıktı elde edildi. Her iki görev de belirli prompt mühendisliği teknikleriyle tamamlandı.',
+    year: '2026',
+    discipline: 'AI · Mockup · Görsel',
+    tools: 'ChatGPT, Gemini',
+    tags: ['Mockup', 'Watermark', 'AI'],
+    aiTags: ['ChatGPT', 'Gemini'],
+    cover: 'p1_billboard.png',
+    coverFit: 'cover',
+    gallery: ['p1_billboard.png', 'p1_watermark.png'],
+    prompts: [
+      { label: 'Billboard Mockup (ChatGPT)', text: 'A high-quality, realistic product shot of a billboard placed in the center, shot on iPhone. The background is a clean, minimalist solid white studio setting with soft, natural daylight coming from the side. Subtle, soft shadows to give it depth and a professional yet organic feel. 8k resolution, sharp focus on the product, clean lines, minimalist aesthetic.' },
+      { label: 'Watermark Kaldırma (Gemini)', text: 'Analyze this image and generate a new one with the exact same composition, colors, and subject, but remove any text overlay or watermarks visible on the image, making it completely clean.' }
+    ]
+  },
+  {
+    num: '06.',
+    title: 'AI Font Tasarımı',
+    subtitle: 'Yapay zeka ile üretilmiş iki özgün tipografi: gotik blackletter ve holografik 3D balon font.',
+    body: 'Bu projede Gemini kullanılarak iki farklı tipografi karakteri tasarlandı. İlk çalışmada ortaçağ gotik el yazması estetiğinden ilham alınarak yoğun kontrast ve el yapımı doku hissiyle Illuminated Black font specimen oluşturuldu. İkinci çalışmada ise mor-mavi holografik kaplama, metalik parlaklık ve şişirilmiş 3D hacim etkisiyle modern bir balon font specimen üretildi.',
+    year: '2026',
+    discipline: 'Tipografi · AI',
+    tools: 'Gemini',
+    tags: ['Tipografi', 'Font', 'AI'],
+    aiTags: ['Gemini'],
+    cover: 'p6_cover.png',
+    coverFit: 'cover',
+    gallery: ['p6_cover.png', 'p6_g1.png'],
+    prompts: [
+      { label: 'Illuminated Black — Gotik Font', text: 'Create a complete blackletter typography specimen sheet on a pure white background. The font name is "ILLUMINATED BLACK". Display all uppercase letters A–Z across two rows, all lowercase letters a–z across two rows, and numerals 0–9 on a final row. Style: medieval illuminated manuscript calligraphy, heavy gothic strokes, sharp hairline serifs, slightly condensed letterforms, hand-inked texture. Pure black ink on white, maximum contrast, clean typographic layout, no decorative borders.' },
+      { label: 'Typography Specimen — Holografik 3D Balon', text: 'Generate a full typography specimen sheet on a pure black background. Font style: 3D inflated bubble letters with a holographic chrome-purple gradient surface, iridescent blue-pink-violet sheen, soft inner glow and sharp specular highlights. Display title "TYPOGRAPHY SPECIMEN" at the top in large bold letters, uppercase A–Z across two rows, lowercase a–z on one row, numerals 0–9 on the bottom row. Dramatic studio lighting with metallic reflections, futuristic and bold aesthetic, no background texture.' }
+    ]
+  },
+  {
+    num: '07.',
+    title: 'Oyun Gelistirmede YZ',
+    subtitle: 'Yapay Zeka Oyun Yaratimini Nasil Demokratiklestiriyor — Bir Vaka Calismasi',
+    body: 'Grup calismasi olarak yurutülen bu projede, teknik altyapi bilgisi olmadan yalnizca yapay zeka araclariyla bir oyun prototipi gelistirildi. Icerik; NotebookLM uzerinde 50 farkli kaynak (akademik makaleler, oyun gelistirme rehberleri, AI arac dokümantasyonlari) yüklenerek yapay zekanin bu kaynaklari analiz etmesi ve sentezlemesi yontemiyle uretildi. Elde edilen icerik Gamma platformunda görsel slaytlara dönüstürüldü.',
+    year: '2026',
+    discipline: 'Oyun Gelistirme · AI · Sunum',
+    tools: 'Claude, ChatGPT, Gemini, NotebookLM, Gamma',
+    tags: ['Oyun', 'Prototip', 'AI', 'Grup'],
+    aiTags: ['Claude', 'ChatGPT', 'Gemini', 'NotebookLM', 'Gamma'],
+    cover: 'p7_cover.png',
+    coverFit: 'cover',
+    gallery: ['p7_g1.png', 'p7_g2.png', 'p7_g3.png', 'p7_g4.png', 'p7_g5.png'],
+    prompts: [
+      { label: 'Uretim Yontemi', text: 'Bu sunum belirli bir prompt kullanilmadan olusturulmustur. Icerik; NotebookLM uzerinde 50 farkli kaynak yüklenerek yapay zekanin bu kaynaklari analiz etmesi, sentezlemesi ve yapilandirmasi yontemiyle uretilmistir. Elde edilen icerik Gamma platformunda görsel slaytlara dönüstürülmüstür. Araç ekosistemi: Replit (kodlama ortami), Arena AI (dagilim altyapisi), Pixelab (karakter varlik tasarimi), Gamma (sunum), NotebookLM (arastirma sentezi).' }
+    ]
+  }
+];
+
+let currentProject = 0;
+
+function showDetail(index) {
+  currentProject = index;
+  const p = projects[index];
+  document.getElementById('d-num').textContent = p.num;
+  document.getElementById('d-title').textContent = p.title;
+  document.getElementById('d-subtitle').textContent = p.subtitle;
+  document.getElementById('d-body').textContent = p.body;
+
+  // Prompt alanı
+  const promptSection = document.getElementById('detail-prompt-section');
+  if (p.prompts && p.prompts.length > 0) {
+    document.getElementById('d-prompts-list').innerHTML = p.prompts.map(pr =>
+      `<div class="prompt-item">
+        <div class="prompt-item-label">${pr.label}</div>
+        <div class="prompt-item-text">${pr.text}</div>
+      </div>`
+    ).join('');
+    const aiTagsEl = document.getElementById('d-ai-tags');
+    if (p.aiTags && p.aiTags.length > 0) {
+      aiTagsEl.innerHTML = p.aiTags.map(tag => {
+        const t = tag.toLowerCase();
+        const cls = t.includes('claude') ? 'claude' : t.includes('chatgpt') ? 'chatgpt' : t.includes('gemini') ? 'gemini' : t.includes('notebooklm') ? 'notebooklm' : t.includes('gamma') ? 'gamma' : '';
+        return `<span class="ai-tag ${cls}">${tag}</span>`;
+      }).join('');
+    } else { aiTagsEl.innerHTML = ''; }
+    promptSection.style.display = 'block';
+  } else {
+    promptSection.style.display = 'none';
+  }
+  document.getElementById('d-year').textContent = p.year;
+  document.getElementById('d-discipline').textContent = p.discipline;
+  document.getElementById('d-tools').textContent = p.tools;
+  const tagsEl = document.getElementById('d-tags');
+  tagsEl.innerHTML = p.tags.map(t => `<span class="project-tag">${t}</span>`).join('');
+
+  // Ana görsel
+  const detailRight = document.querySelector('.detail-right');
+  if (p.cover) {
+    const fit = p.coverFit || 'cover';
+    const bg = fit === 'contain' ? 'background:#111;padding:1.5rem;' : '';
+    detailRight.innerHTML = `<img src="${p.cover}" alt="${p.title}" style="width:100%;height:100%;object-fit:${fit};${bg}">`;
+  } else {
+    detailRight.innerHTML = `<div class="placeholder-inner"><span class="add-icon">+</span><span class="placeholder-text">Ana görsel ekle</span></div>`;
+  }
+
+  // PDF bölümü
+  const pdfSection = document.getElementById('detail-pdf-section');
+  const pdfViewer = document.getElementById('d-pdf-viewer');
+  if (p.pdf) {
+    pdfViewer.innerHTML = `<iframe src="${p.pdf}" title="PDF Döküman"></iframe>`;
+    pdfSection.style.display = 'block';
+  } else {
+    pdfSection.style.display = 'none';
+  }
+
+  // Galeri — grid'i sıfırdan yeniden oluştur
+  const galleryGrid = document.querySelector('.detail-gallery-grid');
+  const galleryList = p.gallery || [];
+  const gFit = p.galleryFit || 'cover';
+  galleryGrid.innerHTML = galleryList.map((src, i) => {
+    if (src) {
+      if (gFit === 'contain') {
+        return `<div class="detail-gallery-item" style="aspect-ratio:unset;height:auto;background:#0a0a0a;padding:1.5rem;border-radius:8px;"><img src="${src}" alt="Görsel ${i+1}" style="width:100%;height:auto;object-fit:contain;border-radius:4px;display:block;"></div>`;
+      }
+      return `<div class="detail-gallery-item"><img src="${src}" alt="Görsel ${i+1}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>`;
+    } else {
+      return `<div class="detail-gallery-item"><div class="item-inner"><span style="font-size:20px;color:#2f2f2f">+</span><span class="item-label">Görsel ekle</span></div></div>`;
+    }
+  }).join('');
+
+  const prev = projects[index - 1];
+  const next = projects[index + 1];
+  document.getElementById('prev-title').textContent = prev ? prev.title : '—';
+  document.getElementById('next-title').textContent = next ? next.title : '—';
+  document.getElementById('prev-project').style.opacity = prev ? '1' : '0.3';
+  document.getElementById('prev-project').style.pointerEvents = prev ? 'auto' : 'none';
+  document.getElementById('next-project').style.opacity = next ? '1' : '0.3';
+  document.getElementById('next-project').style.pointerEvents = next ? 'auto' : 'none';
+  document.getElementById('home-page').classList.remove('active');
+  document.getElementById('detail-page').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function navProject(dir) {
+  const newIndex = currentProject + dir;
+  if (newIndex >= 0 && newIndex < projects.length) showDetail(newIndex);
+}
+
+function showHome() {
+  document.getElementById('detail-page').classList.remove('active');
+  document.getElementById('home-page').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function scrollToSection(id) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }, 50);
+}
+
+  // ── ALL IMAGES LIST ──────────────────────────────
+  const allShowcaseImgs = [
+    { src: 'cover.png',           alt: 'FoxLike Crunch' },
+    { src: 'gallery1.png',        alt: 'FoxLike - Galeri 1' },
+    { src: 'gallery2.png',        alt: 'FoxLike - Galeri 2' },
+    { src: 'gallery3.png',        alt: 'FoxLike - Galeri 3' },
+    { src: 'p2_cover.png',        alt: 'Apple Broşür Kapak' },
+    { src: 'p2_g1.png',           alt: 'Apple - Galeri 1' },
+    { src: 'p2_g2.png',           alt: 'Apple - Galeri 2' },
+    { src: 'p2_g3.png',           alt: 'Apple - Galeri 3' },
+    { src: 'p3_cover.png',        alt: 'UI/UX Rehber Kapak' },
+    { src: 'p3_g1.png',           alt: 'UI/UX - Galeri 1' },
+    { src: 'p3_g2.png',           alt: 'UI/UX - Galeri 2' },
+    { src: 'p3_g3.png',           alt: 'UI/UX - Galeri 3' },
+    { src: 'p3_g4.png',           alt: 'UI/UX - Galeri 4' },
+    { src: 'p3_g5.png',           alt: 'UI/UX - Galeri 5' },
+    { src: 'p4_cover.png',        alt: 'Steam Pitch Deck' },
+    { src: 'p4_g1.png',           alt: 'Steam - Slayt 1' },
+    { src: 'p4_g2.png',           alt: 'Steam - Slayt 2' },
+    { src: 'p4_g3.png',           alt: 'Steam - Slayt 3' },
+    { src: 'p4_g4.png',           alt: 'Steam - Slayt 4' },
+    { src: 'p4_g5.png',           alt: 'Steam - Slayt 5' },
+    { src: 'p4_g6.png',           alt: 'Steam - Slayt 6' },
+    { src: 'p1_billboard.png',    alt: 'Billboard Mockup' },
+    { src: 'p1_watermark.png',    alt: 'Watermark' },
+    { src: 'p6_cover.png',        alt: 'Illuminated Black' },
+    { src: 'p6_g1.png',           alt: 'Typography Specimen' },
+    { src: 'p7_cover.png',        alt: 'Oyun Geliştirmede YZ' },
+    { src: 'p7_g1.png',           alt: 'Prototip Özeti' },
+    { src: 'p7_g2.png',           alt: 'Araç Keşfi' },
+    { src: 'p7_g3.png',           alt: 'Karakter Tasarımı' },
+    { src: 'p7_g4.png',           alt: 'Varlık Entegrasyonu' },
+    { src: 'p7_g5.png',           alt: 'Sonuç' },
+    { src: 'showcase_extra.png',  alt: '06.02.2023 Unutmadık' },
+  ];
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ── SHOWCASE TICKER ──────────────────────────────
+  (function() {
+    const track = document.getElementById('showcaseTrack');
+    if (!track) return;
+    const shuffled = shuffle(allShowcaseImgs);
+    const items = [...shuffled, ...shuffled];
+    track.innerHTML = items.map(img =>
+      `<div class="showcase-item" onclick="openGaleriAt('${img.src}')">
+        <img src="${img.src}" alt="${img.alt}" loading="lazy">
+      </div>`
+    ).join('');
+    track.style.animationDuration = (shuffled.length * 3.2) + 's';
+  })();
+
+  // ── GALERİ ───────────────────────────────────────
+  let galeriImgs = [];
+  let lightboxIndex = 0;
+
+  function openGaleri() {
+    galeriImgs = shuffle(allShowcaseImgs);
+    const grid = document.getElementById('galeriGrid');
+    grid.innerHTML = galeriImgs.map((img, i) =>
+      `<div class="galeri-cell" onclick="openLightbox(${i})">
+        <img src="${img.src}" alt="${img.alt}" loading="lazy">
+      </div>`
+    ).join('');
+    document.getElementById('galeriOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openGaleriAt(src) {
+    openGaleri();
+    const idx = galeriImgs.findIndex(i => i.src === src);
+    if (idx >= 0) { setTimeout(() => openLightbox(idx), 50); }
+  }
+
+  function closeGaleri() {
+    document.getElementById('galeriOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ── LIGHTBOX ─────────────────────────────────────
+  function openLightbox(index) {
+    lightboxIndex = index;
+    document.getElementById('lightboxImg').src = galeriImgs[index].src;
+    document.getElementById('lightboxImg').alt = galeriImgs[index].alt;
+    document.getElementById('lightbox').classList.add('active');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+
+  function lightboxNav(dir) {
+    lightboxIndex = (lightboxIndex + dir + galeriImgs.length) % galeriImgs.length;
+    document.getElementById('lightboxImg').src = galeriImgs[lightboxIndex].src;
+    document.getElementById('lightboxImg').alt = galeriImgs[lightboxIndex].alt;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeLightbox(); closeGaleri(); }
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+  });
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+</script>
+</body>
+</html>

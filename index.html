@@ -435,20 +435,12 @@
     <span class="count">07 proje</span>
   </div>
 
-  <article class="project" onclick="showDetail(0)">
-    <div class="project-info">
-      <span class="project-num">01.</span>
-      <div>
-        <h2 class="project-title">Melomania</h2>
-        <p class="project-desc"></p>
-        <div class="project-tags"></div>
-      </div>
-      <span class="project-arrow">→</span>
-    </div>
-    <div class="project-visual">
-      <img src="cover.png" alt="Melomania maskot">
-    </div>
-  </article>
+  <div class="section-header" id="works">
+    <span class="label">Selected</span>
+    <span class="count" id="projects-count">07 projects</span>
+  </div>
+
+  <div id="projects-list"><!-- JS tarafından dinamik olarak doldurulur --></div>
 
   <article class="project reverse" onclick="showDetail(1)">
     <div class="project-info">
@@ -803,7 +795,38 @@ const projects = [
     video: '',
     prompts: []
   }
-];
+];function renderProjectCards() {
+  const list = document.getElementById('projects-list');
+  document.getElementById('projects-count').textContent =
+    String(projects.length).padStart(2, '0') + ' projects';
+
+  list.innerHTML = projects.map((p, i) => {
+    const reverseClass = i % 2 === 1 ? ' reverse' : '';
+    const tagsHtml = (p.tags || []).map(t => `<span class="project-tag">${t}</span>`).join('');
+    const fit = p.coverFit || 'cover';
+    const imgStyle = fit === 'contain'
+      ? 'width:100%;height:100%;object-fit:contain;background:#111;padding:1.5rem;'
+      : 'width:100%;height:100%;object-fit:cover;';
+    const imgHtml = p.cover
+      ? `<img src="${p.cover}" alt="${p.title}" style="${imgStyle}">`
+      : `<div class="placeholder-inner"><span class="add-icon">+</span><span class="placeholder-text">Add cover image</span></div>`;
+
+    return `
+    <article class="project${reverseClass}" onclick="showDetail(${i})">
+      <div class="project-info">
+        <span class="project-num">${p.num}</span>
+        <div>
+          <h2 class="project-title">${p.title}</h2>
+          <p class="project-desc">${p.subtitle || ''}</p>
+          <div class="project-tags">${tagsHtml}</div>
+        </div>
+        <span class="project-arrow">→</span>
+      </div>
+      <div class="project-visual">${imgHtml}</div>
+    </article>`;
+  }).join('');
+}
+renderProjectCards();
 
 let currentProject = 0;
 let savedScrollY = 0;

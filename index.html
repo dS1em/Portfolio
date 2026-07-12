@@ -924,8 +924,12 @@ function navProject(dir) {
 function showHome() {
   document.getElementById('detail-page').classList.remove('active');
   document.getElementById('home-page').classList.add('active');
-  document.documentElement.scrollTop = savedScrollY;
+  const html = document.documentElement;
+  const prevBehavior = html.style.scrollBehavior;
+  html.style.scrollBehavior = 'auto';
+  html.scrollTop = savedScrollY;
   document.body.scrollTop = savedScrollY;
+  html.style.scrollBehavior = prevBehavior;
 }
 
 function scrollToSection(id) {

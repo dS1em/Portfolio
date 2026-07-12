@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio. 2026 — Doğukan Şahin</title>
+<meta name="description" content="Doğukan Şahin — Visual Communication Design portfolio.">
+<meta property="og:title" content="Doğukan Şahin — Portfolio">
+<meta property="og:description" content="Visual Communication Design · Mehmet Akif Ersoy University">
+<meta property="og:image" content="cover.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -42,7 +48,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 3rem;
+    padding: 1.25rem calc(3rem + 8px);
     border-bottom: 1px solid var(--border);
     background: rgba(13,13,13,0.95);
     backdrop-filter: blur(8px);
@@ -69,7 +75,7 @@
   .hero {
     min-height: 100vh; display: flex;
     flex-direction: column; justify-content: flex-end;
-    padding: 0 3rem 4rem;
+    padding: 0 calc(3rem + 8px) 4rem;
     border-bottom: 1px solid var(--border);
     padding-top: 80px;
   }
@@ -92,12 +98,12 @@
     display: grid; grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid var(--border);
   }
-  .about-left { padding: 5rem 3rem; border-right: 1px solid var(--border); }
+  .about-left { padding: 5rem calc(3rem + 8px); border-right: 1px solid var(--border); }
   .about-statement {
     font-size: clamp(24px, 3vw, 38px); font-weight: 500;
     line-height: 1.25; letter-spacing: -0.02em; max-width: 520px;
   }
-  .about-right { padding: 5rem 3rem; }
+  .about-right { padding: 5rem calc(3rem + 8px); }
   .about-bio { font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
   .tools-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1rem; }
   .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -112,7 +118,7 @@
   /* SECTION HEADER */
   .section-header {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 2rem 3rem; border-bottom: 1px solid var(--border);
+    padding: 2rem calc(3rem + 8px); border-bottom: 1px solid var(--border);
   }
   .section-header .label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
   .section-header .count { font-size: 11px; color: var(--gray); }
@@ -127,7 +133,7 @@
   .project.reverse { direction: rtl; }
   .project.reverse > * { direction: ltr; }
   .project-info {
-    padding: 4rem 3rem; display: flex;
+    padding: 4rem calc(3rem + 8px); display: flex;
     flex-direction: column; justify-content: space-between;
     border-right: 1px solid var(--border);
   }
@@ -155,7 +161,7 @@
 
   /* SHOWCASE TICKER */
   .showcase { padding: 2rem 0; border-bottom: 1px solid var(--border); overflow: hidden; }
-  .showcase-header { padding: 0 3rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .showcase-header { padding: 0 calc(3rem + 8px) 1.5rem; display: flex; align-items: center; justify-content: space-between; }
   .showcase-header span { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); }
   .showcase-btn {
     font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -195,7 +201,7 @@
   .galeri-overlay.active { display: block; }
   .galeri-header {
     position: sticky; top: 0; z-index: 10;
-    padding: 1.5rem 3rem; border-bottom: 1px solid var(--border);
+    padding: 1.5rem calc(3rem + 8px); border-bottom: 1px solid var(--border);
     display: flex; align-items: center; justify-content: space-between;
     background: var(--black);
   }
@@ -207,7 +213,7 @@
   }
   .galeri-close:hover { background: #222; }
   .galeri-grid {
-    padding: 2rem 3rem;
+    padding: 2rem calc(3rem + 8px);
     display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
   }
   .galeri-cell {
@@ -240,7 +246,7 @@
   .lightbox-next { right: 1.5rem; }
 
   /* CONTACT */
-  .contact { padding: 6rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
+  .contact { padding: 6rem calc(3rem + 8px); display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; }
   .contact-heading { font-size: clamp(36px, 6vw, 80px); font-weight: 700; line-height: 0.95; letter-spacing: -0.03em; }
   .contact-heading .muted { color: #333; }
   .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
@@ -248,7 +254,7 @@
   .contact-value { font-size: 15px; color: var(--white); }
 
   footer {
-    padding: 1.5rem 3rem; border-top: 1px solid var(--border);
+    padding: 1.5rem calc(3rem + 8px); border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
   }
   footer p { font-size: 12px; color: var(--gray); letter-spacing: 0.06em; }
@@ -262,7 +268,7 @@
 
   .detail-back {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 1.5rem 3rem; font-size: 13px; color: var(--gray);
+    padding: 1.5rem calc(3rem + 8px); font-size: 13px; color: var(--gray);
     letter-spacing: 0.06em; cursor: pointer; border-bottom: 1px solid var(--border);
     width: 100%; transition: color 0.2s;
     background: none; border-left: none; border-right: none; border-top: none;
@@ -276,7 +282,7 @@
     border-bottom: 1px solid var(--border); min-height: 560px;
   }
   .detail-left {
-    padding: 5rem 3rem; display: flex;
+    padding: 5rem calc(3rem + 8px); display: flex;
     flex-direction: column; justify-content: space-between;
     border-right: 1px solid var(--border);
   }
@@ -295,11 +301,11 @@
   .detail-right img { width: 100%; height: 100%; object-fit: cover; }
   .detail-right .placeholder-inner { width: calc(100% - 48px); height: calc(100% - 48px); }
 
-  .detail-body { padding: 4rem 3rem; border-bottom: 1px solid var(--border); }
+  .detail-body { padding: 4rem calc(3rem + 8px); border-bottom: 1px solid var(--border); }
   .detail-body h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
   .detail-body p { font-size: 16px; color: var(--white); line-height: 1.85; max-width: 680px; }
 
-  .detail-prompt { padding: 3rem; border-bottom: 1px solid var(--border); background: #111; }
+  .detail-prompt { padding: 3rem calc(3rem + 8px); border-bottom: 1px solid var(--border); background: #111; }
   .detail-prompt h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
   .prompt-item { margin-bottom: 1.25rem; }
   .prompt-item-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 6px; }
@@ -312,7 +318,7 @@
   .ai-tag.gamma { background: #1e1a2a; color: #a78bfa; border: 1px solid #3a2a4a; }
   .ai-tag.chatgpt { background: #0d1f0d; color: #4caf7d; border: 1px solid #1a3a1a; }
 
-  .detail-gallery { padding: 3rem; border-bottom: 1px solid var(--border); }
+  .detail-gallery { padding: 3rem calc(3rem + 8px); border-bottom: 1px solid var(--border); }
   .detail-gallery h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
   .detail-gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .detail-gallery-item {
@@ -323,7 +329,7 @@
   .detail-gallery-item img { width: 100%; height: 100%; object-fit: cover; }
   .detail-gallery-item .item-inner { width: calc(100% - 24px); height: calc(100% - 24px); }
 
-  .detail-pdf { padding: 3rem; border-bottom: 1px solid var(--border); }
+  .detail-pdf { padding: 3rem calc(3rem + 8px); border-bottom: 1px solid var(--border); }
   .detail-pdf h3 { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
   .pdf-viewer iframe { width: 100%; height: 600px; border: none; border-radius: 8px; background: #fff; }
   .project-visual img.contain { object-fit: contain; background: #0d0d0d; padding: 1rem; }
@@ -345,7 +351,7 @@
     border-top: 1px solid var(--border);
   }
   .detail-nav-item {
-    padding: 2rem 3rem; cursor: pointer;
+    padding: 2rem calc(3rem + 8px); cursor: pointer;
     transition: background 0.2s; display: flex;
     flex-direction: column; gap: 6px;
   }
@@ -358,10 +364,10 @@
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     nav .nav-links { gap: 1.5rem; }
-    .hero { padding: 80px 1.5rem 3rem; }
+    .hero { padding: 80px calc(1.5rem + 8px) 3rem; }
     .about { grid-template-columns: 1fr; }
-    .about-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
-    .about-right { padding: 3rem 1.5rem; }
+    .about-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem calc(1.5rem + 8px); }
+    .about-right { padding: 3rem calc(1.5rem + 8px); }
     .project { grid-template-columns: 1fr; }
     .project.reverse { direction: ltr; }
     .project-info { border-right: none; border-bottom: 1px solid var(--border); padding: 2.5rem 1.5rem; }
@@ -370,10 +376,10 @@
     .showcase { padding: 1.5rem; }
     .showcase-grid { grid-template-columns: repeat(2, 1fr); }
     .section-header { padding: 1.5rem; }
-    .contact { grid-template-columns: 1fr; padding: 3rem 1.5rem; }
+    .contact { grid-template-columns: 1fr; padding: 3rem calc(1.5rem + 8px); }
     footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 8px; text-align: center; }
     .detail-hero { grid-template-columns: 1fr; }
-    .detail-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 1.5rem; }
+    .detail-left { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem calc(1.5rem + 8px); }
     .detail-right { min-height: 260px; }
     .detail-body, .detail-gallery, .detail-video { padding: 2rem 1.5rem; }
     .detail-gallery-grid { grid-template-columns: 1fr; }
@@ -389,9 +395,9 @@
 <nav>
   <a class="logo" onclick="showHome()">Doğukan Şahin</a>
   <ul class="nav-links">
-    <li><a onclick="showHome(); scrollToSection('works')">İşler</a></li>
-    <li><a onclick="showHome(); scrollToSection('about')">Hakkında</a></li>
-    <li><a onclick="showHome(); scrollToSection('contact')">İletişim</a></li>
+    <li><a onclick="showHome(); scrollToSection('works')">Work</a></li>
+    <li><a onclick="showHome(); scrollToSection('about')">About</a></li>
+    <li><a onclick="showHome(); scrollToSection('contact')">Contact</a></li>
   </ul>
 </nav>
 
@@ -402,18 +408,18 @@
     <div class="hero-bg" style="background-image:url('p6_cover.png')"></div>
     <h1 class="hero-title">Portfolio<span class="dot">.</span></h1>
     <div class="hero-meta">
-      <span class="name">Doğukan Şahin — Görsel İletişim Tasarımı · Mehmet Akif Ersoy Üniversitesi</span>
+      <span class="name">Doğukan Şahin — Visual Communication Design · Mehmet Akif Ersoy University</span>
       <span class="year">2026</span>
     </div>
   </section>
 
   <section class="about" id="about">
     <div class="about-left">
-      <p class="about-statement">Tasarım benim için görünmezi görünür kılma biçimi — her zaman anlamlı olmalı.</p>
+      <p class="about-statement">For me, design is a way of making the invisible visible — it should always mean something.</p>
     </div>
     <div class="about-right">
-      <p class="about-bio">Mehmet Akif Ersoy Üniversitesi Görsel İletişim Tasarımı öğrencisiyim. Grafik tasarım, kimlik, tipografi ve dijital medya üzerine çalışıyorum. Her projeye kendine özgü bir ses kazandırmaya inanıyorum.</p>
-      <p class="tools-label">Araçlar</p>
+      <p class="about-bio">I'm a Visual Communication Design student at Mehmet Akif Ersoy University. I work on graphic design, brand identity, typography, and digital media. I believe every project deserves its own distinct voice.</p>
+      <p class="tools-label">Software Stack</p>
       <div class="tools-grid">
         <span class="tool-tag">Illustrator</span>
         <span class="tool-tag">Photoshop</span>
@@ -425,7 +431,7 @@
   </section>
 
   <div class="section-header" id="works">
-    <span class="label">Seçki</span>
+    <span class="label">Selected</span>
     <span class="count">07 proje</span>
   </div>
 
@@ -434,12 +440,8 @@
       <span class="project-num">01.</span>
       <div>
         <h2 class="project-title">FoxLike Crunch</h2>
-        <p class="project-desc">Tahıl markası için AI destekli maskot ve ambalaj tasarımı. Karakter kimliği, ürün görselleri ve marka bütünlüğü.</p>
-        <div class="project-tags">
-          <span class="project-tag">Branding</span>
-          <span class="project-tag">Maskot</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -453,12 +455,8 @@
       <span class="project-num">02.</span>
       <div>
         <h2 class="project-title">Apple Broşür & Afiş</h2>
-        <p class="project-desc">iPhone 17 Pro Max ve iPad Pro için AI ile üretilmiş reklam afişleri ve ürün broşürü tasarımları.</p>
-        <div class="project-tags">
-          <span class="project-tag">Print</span>
-          <span class="project-tag">Reklam</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -472,12 +470,8 @@
       <span class="project-num">03.</span>
       <div>
         <h2 class="project-title">2025 UI/UX Başarı Rehberi</h2>
-        <p class="project-desc">Estetikten sistemlere bütünsel dijital deneyimler. NotebookLM ile üretilmiş 15 sayfalık kapsamlı tasarım rehberi.</p>
-        <div class="project-tags">
-          <span class="project-tag">UI/UX</span>
-          <span class="project-tag">Araştırma</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -491,12 +485,8 @@
       <span class="project-num">04.</span>
       <div>
         <h2 class="project-title">Steam Pitch Deck</h2>
-        <p class="project-desc">Oyun dünyasının dijital kalbi. 38 kaynak üzerinden NotebookLM ile içerik üretildi, Gamma ile görsel sunuma dönüştürüldü.</p>
-        <div class="project-tags">
-          <span class="project-tag">Pitch Deck</span>
-          <span class="project-tag">Sunum</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -510,12 +500,8 @@
       <span class="project-num">05.</span>
       <div>
         <h2 class="project-title">Mockup & Watermark</h2>
-        <p class="project-desc">ChatGPT ile billboard mockup üretimi ve Gemini ile watermark temizleme çalışmaları.</p>
-        <div class="project-tags">
-          <span class="project-tag">Mockup</span>
-          <span class="project-tag">Watermark</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -529,12 +515,8 @@
       <span class="project-num">06.</span>
       <div>
         <h2 class="project-title">AI Font Tasarımı</h2>
-        <p class="project-desc">Yapay zeka ile üretilmiş iki özgün tipografi: gotik blackletter ve holografik 3D balon font.</p>
-        <div class="project-tags">
-          <span class="project-tag">Tipografi</span>
-          <span class="project-tag">Font</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -548,12 +530,8 @@
       <span class="project-num">07.</span>
       <div>
         <h2 class="project-title">Oyun Gelistirmede YZ</h2>
-        <p class="project-desc">Grup calismasi: AI araclariyla oyun prototipi. NotebookLM ile 50 kaynak, Gamma ile sunuma dönüstürüldü.</p>
-        <div class="project-tags">
-          <span class="project-tag">Oyun</span>
-          <span class="project-tag">Prototip</span>
-          <span class="project-tag">AI</span>
-        </div>
+        <p class="project-desc"></p>
+        <div class="project-tags"></div>
       </div>
       <span class="project-arrow">→</span>
     </div>
@@ -563,13 +541,13 @@
   </article>
 
   <div class="section-header">
-    <span class="label">Vitrin</span>
-    <span class="count">Ek görseller</span>
+    <span class="label">Showcase</span>
+    <span class="count">Additional visuals</span>
   </div>
   <section class="showcase">
     <div class="showcase-header">
-      <span>Tüm Çalışmalar</span>
-      <button class="showcase-btn" onclick="openGaleri()">Tümünü Gör →</button>
+      <span>All Work</span>
+      <button class="showcase-btn" onclick="openGaleri()">View All →</button>
     </div>
     <div class="showcase-track-wrap">
       <div class="showcase-track" id="showcaseTrack"></div>
@@ -579,7 +557,7 @@
   <!-- GALERİ SAYFASI -->
   <div class="galeri-overlay" id="galeriOverlay">
     <div class="galeri-header">
-      <h2>Tüm Çalışmalar</h2>
+      <h2>All Work</h2>
       <button class="galeri-close" onclick="closeGaleri()">×</button>
     </div>
     <div class="galeri-grid" id="galeriGrid"></div>
@@ -602,23 +580,27 @@
     </div>
     <div class="contact-details">
       <div>
-        <p class="contact-label">E-posta</p>
-        <p class="contact-value">dqannorth@gmail.com</p>
+        <p class="contact-label">Email</p>
+        <p class="contact-value"><a href="mailto:dqannorth@gmail.com" style="color:inherit;text-decoration:none;">dqannorth@gmail.com</a></p>
       </div>
       <div>
-        <p class="contact-label">Üniversite</p>
-        <p class="contact-value">Mehmet Akif Ersoy Üniversitesi<br>Görsel İletişim Tasarımı</p>
+        <p class="contact-label">University</p>
+        <p class="contact-value">Mehmet Akif Ersoy University<br>Visual Communication Design</p>
       </div>
       <div>
-        <p class="contact-label">Bağlantılar</p>
-        <p class="contact-value">Behance &nbsp;·&nbsp; Instagram</p>
+        <p class="contact-label">Links</p>
+        <p class="contact-value">
+          <a href="https://www.behance.net/PROFIL_ADIN" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Behance</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.instagram.com/PROFIL_ADIN" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Instagram</a>
+        </p>
       </div>
     </div>
   </section>
 
   <footer>
     <p>© 2026 Doğukan Şahin</p>
-    <p>Görsel İletişim Tasarımı · Mehmet Akif Ersoy Üniversitesi</p>
+    <p>Visual Communication Design · Mehmet Akif Ersoy University</p>
   </footer>
 
 </div><!-- /home-page -->
@@ -634,19 +616,19 @@
     <div class="detail-left">
       <span class="detail-num" id="d-num">01.</span>
       <div>
-        <h1 class="detail-title" id="d-title">Proje Başlığı</h1>
-        <p class="detail-subtitle" id="d-subtitle">Projenin kısa açıklaması. Konsept, hedef kitle ve tasarım yaklaşımından bahsedebilirsin.</p>
+        <h1 class="detail-title" id="d-title">Project Title</h1>
+        <p class="detail-subtitle" id="d-subtitle">Short description of the project — mention the concept, target audience, and design approach.</p>
         <div class="detail-meta">
           <div class="detail-meta-item">
-            <p class="detail-meta-label">Yıl</p>
+            <p class="detail-meta-label">Year</p>
             <p class="detail-meta-value" id="d-year">2026</p>
           </div>
           <div class="detail-meta-item">
-            <p class="detail-meta-label">Disiplin</p>
+            <p class="detail-meta-label">Discipline</p>
             <p class="detail-meta-value" id="d-discipline">Branding</p>
           </div>
           <div class="detail-meta-item">
-            <p class="detail-meta-label">Araçlar</p>
+            <p class="detail-meta-label">Software Stack</p>
             <p class="detail-meta-value" id="d-tools">Illustrator, Photoshop</p>
           </div>
         </div>
@@ -656,51 +638,46 @@
     <div class="detail-right">
       <div class="placeholder-inner">
         <span class="add-icon">+</span>
-        <span class="placeholder-text">Ana görsel ekle</span>
+        <span class="placeholder-text">Add cover image</span>
       </div>
     </div>
   </div>
 
   <div class="detail-body">
-    <h3>Proje Hakkında</h3>
-    <p id="d-body">Bu alana projenin detaylı açıklamasını yazabilirsin.</p>
+    <h3>About the Project</h3>
+    <p id="d-body">Write the detailed description of the project here.</p>
   </div>
 
   <div class="detail-prompt" id="detail-prompt-section">
-    <h3>Kullanılan Promptlar</h3>
+    <h3>Process Notes</h3>
     <div id="d-prompts-list"></div>
     <div class="ai-tags-row" id="d-ai-tags"></div>
   </div>
 
   <div class="detail-gallery">
-    <h3>Görseller</h3>
+    <h3>Gallery</h3>
     <div class="detail-gallery-grid">
       <!-- JS tarafından dinamik olarak doldurulur -->
     </div>
   </div>
 
-  <div class="detail-video">
+  <div class="detail-video" id="detail-video-section">
     <h3>Video</h3>
-    <div class="video-placeholder">
-      <div class="video-inner">
-        <span class="video-play">▷</span>
-        <span class="video-label">Video ekle</span>
-      </div>
-    </div>
+    <div class="video-placeholder" id="d-video-viewer"></div>
   </div>
 
   <div class="detail-pdf" id="detail-pdf-section">
-    <h3>PDF Döküman</h3>
+    <h3>PDF Document</h3>
     <div class="pdf-viewer" id="d-pdf-viewer"></div>
   </div>
 
   <div class="detail-nav">
     <div class="detail-nav-item" id="prev-project" onclick="navProject(-1)">
-      <span class="detail-nav-label">← Önceki proje</span>
+      <span class="detail-nav-label">← Previous project</span>
       <span class="detail-nav-title" id="prev-title">—</span>
     </div>
     <div class="detail-nav-item" id="next-project" onclick="navProject(1)" style="text-align:right">
-      <span class="detail-nav-label">Sonraki proje →</span>
+      <span class="detail-nav-label">Next project →</span>
       <span class="detail-nav-title" id="next-title">—</span>
     </div>
   </div>
@@ -712,52 +689,44 @@ const projects = [
   {
     num: '01.',
     title: 'FoxLike Crunch',
-    subtitle: 'Tahıl markası için AI ile üretilmiş maskot karakteri ve ambalaj kimliği.',
-    body: 'FoxLike Crunch, bir tahıl markası için sıfırdan oluşturulan maskot ve ambalaj tasarımı projesidir. Karakterin farklı pozlarda tutarlı bir kimliğe sahip olması ve ürün kutusuyla bütünleşik bir marka dili oluşturulması hedeflendi.',
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'Branding · AI',
-    tools: 'Claude AI, Gemini',
-    tags: ['Branding', 'Maskot', 'AI'],
-    aiTags: ['Claude AI', 'Gemini'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: 'cover.png',
     gallery: ['gallery1.png', 'gallery2.png', 'gallery3.png'],
-    prompts: [
-      { label: 'Maskot karakter', text: 'A cute plush fox mascot character standing upright, soft felt texture, orange and brown colors, white belly with "FoxLike" embroidered text, black round eyes, pink nose, fluffy tail, minimalist toy aesthetic, studio white background, 3D render, high detail' },
-      { label: 'Ürün kutusuyla poz', text: 'Plush fox toy sitting next to a cereal box labeled "FOX-O\'s Crunchy & Clever", Wise Forest Foods branding, cartoon fox illustration on box holding a spoon with milk and cereal, warm beige and orange color palette, product photography style, soft white background' },
-      { label: 'Kutudan fırlama', text: 'Cute plush fox mascot jumping out of an open cereal box labeled "FoxLike Crunch", arms raised in excitement, cereal pieces flying around, felt texture, cheerful expression, warm studio lighting, white background, 3D render' },
-      { label: 'Kase tutan poz', text: 'Plush fox mascot holding a small blue ceramic bowl of cereal with a spoon, smiling expression, soft felt material, orange fur with white belly, "FoxLike" embroidered on chest, clean white-gray background, product mascot photography' }
-    ]
+    video: '',
+    prompts: []
   },
   {
         num: '02.',
     title: 'Apple Broşür & Afiş',
-    subtitle: 'iPhone 17 Pro Max, iPad Pro ve iPhone 17 Air için AI ile üretilmiş reklam afişleri ve broşür.',
-    body: "Apple ürünleri için yapay zeka ile üretilmiş reklam görselleri ve broşür tasarımı projesi. iPhone 17 Pro Max, iPad Pro ve iPhone 17 Air olmak üzere üç farklı ürün için Apple'ın minimal görsel diline sadık kalınarak tasarlandı.",
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'Print · Digital',
-    tools: 'Claude AI, Gemini',
-    tags: ['Print', 'Reklam', 'AI'],
-    aiTags: ['Claude AI', 'Gemini'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     coverFit: 'contain', cover: 'p2_cover.png',
     galleryFit: 'contain',
     gallery: ['p2_g1.png', 'p2_g2.png', 'p2_g3.png'],
-    prompts: [
-      { label: 'iPhone 17 Pro Max kapak afişi', text: 'iPhone 17 Pro Max promotional poster, extreme close-up of triple camera system from top-right corner angle, titanium silver finish, soft warm-to-cool gradient background, large bold headline More than anything bottom left, Apple logo top right, minimal Apple aesthetic, ultra-realistic product render' },
-      { label: 'Broşür iç sayfa', text: 'Apple product brochure spread layout, left page Next-Generation Pro Camera headline with camera close-up and specs 48MP Fusion Sensor 5x Optical Telephoto Zoom ProRes Video Production, right page Unprecedented Power headline with A19 Pro chip 3D render glowing, clean white background, SF Pro typography' },
-      { label: 'iPad Pro afişi', text: 'iPad Pro M4 advertisement poster portrait orientation, headline Your next computer is not a computer, iPad Pro center with Apple Pencil, screen showing soft blue watercolor brushstroke, three feature columns M4 chip Ultra Retina XDR Apple Intelligence, light gray background, Apple aesthetic' },
-      { label: 'iPhone 17 Air afişi', text: 'iPhone 17 Air product poster, pure white background, large thin elegant headline iPhone 17 Air, tagline Thinner than a thought, side profile view showing extreme 5mm thinness, feature text 5mm Titanium All-day battery, minimalist Apple typography, generous white space' }
-    ]
+    video: '',
+    prompts: []
   },
   {
     num: '03.',
     title: '2025 UI/UX Başarı Rehberi',
-    subtitle: 'Estetikten sistemlere bütünsel dijital deneyimler — 15 sayfalık kapsamlı tasarım rehberi.',
-    body: "UI/UX tasarımının 2025 paradigmasını ele alan bu rehber; erişilebilirlik (WCAG 2.2), tasarım token'ları, Glassmorphism vs Neumorphism, Bento Grid, kültürel renk psikolojisi ve yapay zeka destekli kişiselleştirme konularını kapsamaktadır. Sadece güzel görünen değil; akıllı, sistematik ve herkesi kucaklayan arayüzler tasarlamak üzerine.",
+    subtitle: '',
+    body: '',
     year: '2025',
-    discipline: 'UI/UX · Araştırma',
-    tools: 'NotebookLM',
-    tags: ['UI/UX', 'Araştırma', 'AI'],
-    aiTags: ['NotebookLM'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: null,
     gallery: [null, null, null],
     cover: 'p3_cover.png',
@@ -767,85 +736,82 @@ const projects = [
     coverFit: 'cover',
     gallery: ['p3_g1.png', 'p3_g2.png', 'p3_g3.png', 'p3_g4.png', 'p3_g5.png'],
     pdf: 'uiux_rehber.pdf',
-    prompts: [
-      { label: 'NotebookLM ile içerik üretimi', text: 'Bu rehber Google NotebookLM kullanılarak oluşturulmuştur. Kaynak materyaller yüklenerek yapay zekanın içeriği analiz etmesi, organize etmesi ve görsel sunuma uygun slaylar üretmesi sağlanmıştır. Çıktılar: 2025 tasarım paradigmaları, erişilebilirlik kuralları, renk psikolojisi ve motion UI konularını kapsayan 15 sayfalık interaktif rehber.' }
-    ]
+    video: '',
+    prompts: []
   },
   {
     num: '04.',
     title: 'Steam Pitch Deck',
-    subtitle: 'Oyun dünyasının dijital kalbi — Steam ekosistemini anlatan kapsamlı sunum.',
-    body: 'Steam platformunun pazar büyüklüğü, ürün ekosistemi, Steam Atölyesi, Steam Deck ve küresel büyüme verilerini kapsayan pitch deck çalışması. Sunum, belirli bir prompt kullanılmadan NotebookLM üzerinde 38 farklı kaynak analiz edilerek içerik oluşturulmuş, ardından Gamma ile görsel slaytlara dönüştürülmüştür.',
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'Sunum · Araştırma',
-    tools: 'Claude, NotebookLM, Gemini, Gamma',
-    tags: ['Pitch Deck', 'Sunum', 'AI'],
-    aiTags: ['Claude', 'NotebookLM', 'Gemini', 'Gamma'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: 'p4_cover.png',
     coverFit: 'cover',
     gallery: ['p4_g1.png', 'p4_g2.png', 'p4_g3.png', 'p4_g4.png', 'p4_g5.png', 'p4_g6.png'],
-    prompts: [
-      { label: 'Üretim Yöntemi', text: 'Bu sunum belirli bir prompt kullanılmadan oluşturulmuştur. İçerik; NotebookLM üzerinde 38 farklı kaynak (makaleler, Steam istatistikleri, oyun sektörü raporları) yüklenerek yapay zekanın bu kaynakları analiz etmesi ve sentezlemesi yöntemiyle üretilmiştir. Elde edilen içerik Gamma platformunda görsel slaytlara dönüştürülmüştür.' }
-    ]
+    video: '',
+    prompts: []
   },
   {
     num: '05.',
     title: 'Mockup & Watermark',
-    subtitle: 'ChatGPT ile billboard mockup üretimi ve Gemini ile watermark temizleme çalışmaları.',
-    body: 'Bu projede iki farklı AI görevi ele alındı: ChatGPT ile gerçekçi billboard ürün mockup görseli oluşturuldu; Gemini ile ise stok fotoğraf üzerindeki watermarklar kaldırılarak temiz bir çıktı elde edildi. Her iki görev de belirli prompt mühendisliği teknikleriyle tamamlandı.',
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'AI · Mockup · Görsel',
-    tools: 'ChatGPT, Gemini',
-    tags: ['Mockup', 'Watermark', 'AI'],
-    aiTags: ['ChatGPT', 'Gemini'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: 'p1_billboard.png',
     coverFit: 'cover',
     gallery: ['p1_billboard.png', 'p1_watermark.png'],
-    prompts: [
-      { label: 'Billboard Mockup (ChatGPT)', text: 'A high-quality, realistic product shot of a billboard placed in the center, shot on iPhone. The background is a clean, minimalist solid white studio setting with soft, natural daylight coming from the side. Subtle, soft shadows to give it depth and a professional yet organic feel. 8k resolution, sharp focus on the product, clean lines, minimalist aesthetic.' },
-      { label: 'Watermark Kaldırma (Gemini)', text: 'Analyze this image and generate a new one with the exact same composition, colors, and subject, but remove any text overlay or watermarks visible on the image, making it completely clean.' }
-    ]
+    video: '',
+    prompts: []
   },
   {
     num: '06.',
     title: 'AI Font Tasarımı',
-    subtitle: 'Yapay zeka ile üretilmiş iki özgün tipografi: gotik blackletter ve holografik 3D balon font.',
-    body: 'Bu projede Gemini kullanılarak iki farklı tipografi karakteri tasarlandı. İlk çalışmada ortaçağ gotik el yazması estetiğinden ilham alınarak yoğun kontrast ve el yapımı doku hissiyle Illuminated Black font specimen oluşturuldu. İkinci çalışmada ise mor-mavi holografik kaplama, metalik parlaklık ve şişirilmiş 3D hacim etkisiyle modern bir balon font specimen üretildi.',
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'Tipografi · AI',
-    tools: 'Gemini',
-    tags: ['Tipografi', 'Font', 'AI'],
-    aiTags: ['Gemini'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: 'p6_cover.png',
     coverFit: 'cover',
     gallery: ['p6_cover.png', 'p6_g1.png'],
-    prompts: [
-      { label: 'Illuminated Black — Gotik Font', text: 'Create a complete blackletter typography specimen sheet on a pure white background. The font name is "ILLUMINATED BLACK". Display all uppercase letters A–Z across two rows, all lowercase letters a–z across two rows, and numerals 0–9 on a final row. Style: medieval illuminated manuscript calligraphy, heavy gothic strokes, sharp hairline serifs, slightly condensed letterforms, hand-inked texture. Pure black ink on white, maximum contrast, clean typographic layout, no decorative borders.' },
-      { label: 'Typography Specimen — Holografik 3D Balon', text: 'Generate a full typography specimen sheet on a pure black background. Font style: 3D inflated bubble letters with a holographic chrome-purple gradient surface, iridescent blue-pink-violet sheen, soft inner glow and sharp specular highlights. Display title "TYPOGRAPHY SPECIMEN" at the top in large bold letters, uppercase A–Z across two rows, lowercase a–z on one row, numerals 0–9 on the bottom row. Dramatic studio lighting with metallic reflections, futuristic and bold aesthetic, no background texture.' }
-    ]
+    video: '',
+    prompts: []
   },
   {
     num: '07.',
     title: 'Oyun Gelistirmede YZ',
-    subtitle: 'Yapay Zeka Oyun Yaratimini Nasil Demokratiklestiriyor — Bir Vaka Calismasi',
-    body: 'Grup calismasi olarak yurutülen bu projede, teknik altyapi bilgisi olmadan yalnizca yapay zeka araclariyla bir oyun prototipi gelistirildi. Icerik; NotebookLM uzerinde 50 farkli kaynak (akademik makaleler, oyun gelistirme rehberleri, AI arac dokümantasyonlari) yüklenerek yapay zekanin bu kaynaklari analiz etmesi ve sentezlemesi yontemiyle uretildi. Elde edilen icerik Gamma platformunda görsel slaytlara dönüstürüldü.',
+    subtitle: '',
+    body: '',
     year: '2026',
-    discipline: 'Oyun Gelistirme · AI · Sunum',
-    tools: 'Claude, ChatGPT, Gemini, NotebookLM, Gamma',
-    tags: ['Oyun', 'Prototip', 'AI', 'Grup'],
-    aiTags: ['Claude', 'ChatGPT', 'Gemini', 'NotebookLM', 'Gamma'],
+    discipline: '',
+    tools: '',
+    tags: [],
+    aiTags: [],
     cover: 'p7_cover.png',
     coverFit: 'cover',
     gallery: ['p7_g1.png', 'p7_g2.png', 'p7_g3.png', 'p7_g4.png', 'p7_g5.png'],
-    prompts: [
-      { label: 'Uretim Yontemi', text: 'Bu sunum belirli bir prompt kullanilmadan olusturulmustur. Icerik; NotebookLM uzerinde 50 farkli kaynak yüklenerek yapay zekanin bu kaynaklari analiz etmesi, sentezlemesi ve yapilandirmasi yontemiyle uretilmistir. Elde edilen icerik Gamma platformunda görsel slaytlara dönüstürülmüstür. Araç ekosistemi: Replit (kodlama ortami), Arena AI (dagilim altyapisi), Pixelab (karakter varlik tasarimi), Gamma (sunum), NotebookLM (arastirma sentezi).' }
-    ]
+    video: '',
+    prompts: []
   }
 ];
 
 let currentProject = 0;
+let savedScrollY = 0;
 
 function showDetail(index) {
+  if (document.getElementById('home-page').classList.contains('active')) {
+    savedScrollY = window.scrollY;
+  }
   currentProject = index;
   const p = projects[index];
   document.getElementById('d-num').textContent = p.num;
@@ -887,7 +853,7 @@ function showDetail(index) {
     const bg = fit === 'contain' ? 'background:#111;padding:1.5rem;' : '';
     detailRight.innerHTML = `<img src="${p.cover}" alt="${p.title}" style="width:100%;height:100%;object-fit:${fit};${bg}">`;
   } else {
-    detailRight.innerHTML = `<div class="placeholder-inner"><span class="add-icon">+</span><span class="placeholder-text">Ana görsel ekle</span></div>`;
+    detailRight.innerHTML = `<div class="placeholder-inner"><span class="add-icon">+</span><span class="placeholder-text">Add cover image</span></div>`;
   }
 
   // PDF bölümü
@@ -898,6 +864,28 @@ function showDetail(index) {
     pdfSection.style.display = 'block';
   } else {
     pdfSection.style.display = 'none';
+  }
+
+  // Video bölümü
+  const videoSection = document.getElementById('detail-video-section');
+  const videoViewer = document.getElementById('d-video-viewer');
+  if (p.video) {
+    let embedUrl = p.video;
+    const ytMatch = p.video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+    const vimeoMatch = p.video.match(/vimeo\.com\/(\d+)/);
+    if (ytMatch) {
+      embedUrl = `https://www.youtube.com/embed/${ytMatch[1]}`;
+      videoViewer.innerHTML = `<iframe src="${embedUrl}" title="${p.title}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:8px;"></iframe>`;
+    } else if (vimeoMatch) {
+      embedUrl = `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+      videoViewer.innerHTML = `<iframe src="${embedUrl}" title="${p.title}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border-radius:8px;"></iframe>`;
+    } else {
+      videoViewer.innerHTML = `<video src="${p.video}" controls style="width:100%;border-radius:8px;display:block;"></video>`;
+    }
+    videoSection.style.display = 'block';
+  } else {
+    videoViewer.innerHTML = '';
+    videoSection.style.display = 'none';
   }
 
   // Galeri — grid'i sıfırdan yeniden oluştur
@@ -911,7 +899,7 @@ function showDetail(index) {
       }
       return `<div class="detail-gallery-item"><img src="${src}" alt="Görsel ${i+1}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;"></div>`;
     } else {
-      return `<div class="detail-gallery-item"><div class="item-inner"><span style="font-size:20px;color:#2f2f2f">+</span><span class="item-label">Görsel ekle</span></div></div>`;
+      return `<div class="detail-gallery-item"><div class="item-inner"><span style="font-size:20px;color:#2f2f2f">+</span><span class="item-label">Add image</span></div></div>`;
     }
   }).join('');
 
@@ -936,7 +924,8 @@ function navProject(dir) {
 function showHome() {
   document.getElementById('detail-page').classList.remove('active');
   document.getElementById('home-page').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.documentElement.scrollTop = savedScrollY;
+  document.body.scrollTop = savedScrollY;
 }
 
 function scrollToSection(id) {

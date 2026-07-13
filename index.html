@@ -395,9 +395,9 @@
 <nav>
   <a class="logo" onclick="showHome()">Doğukan Şahin</a>
   <ul class="nav-links">
-    <li><a onclick="showHome(); scrollToSection('about')">About</a></li>
-    <li><a onclick="showHome(); scrollToSection('works')">Work</a></li>
-    <li><a onclick="showHome(); scrollToSection('contact')">Contact</a></li>
+    <li><a onclick="goToSection('about')">About</a></li>
+    <li><a onclick="goToSection('works')">Work</a></li>
+    <li><a onclick="goToSection('contact')">Contact</a></li>
   </ul>
 </nav>
 
@@ -876,17 +876,15 @@ function showHome() {
   html.style.scrollBehavior = prevBehavior;
 }
 
-function scrollToSection(id) {
-  setTimeout(() => {
-    const el = document.getElementById(id);
-    if (el) {
-      const htmlEl = document.documentElement;
-      const prevBehaviorSec = htmlEl.style.scrollBehavior;
-      htmlEl.style.scrollBehavior = 'auto';
-      el.scrollIntoView({ behavior: 'auto', block: 'start' });
-      htmlEl.style.scrollBehavior = prevBehaviorSec;
-    }
-  }, 50);
+function goToSection(id) {
+  document.getElementById('detail-page').classList.remove('active');
+  document.getElementById('home-page').classList.add('active');
+  const el = document.getElementById(id);
+  if (el) {
+    const navHeight = document.querySelector('nav').offsetHeight;
+    const targetY = el.getBoundingClientRect().top + window.scrollY - navHeight;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  }
 }
 
   // ── ALL IMAGES LIST ──────────────────────────────

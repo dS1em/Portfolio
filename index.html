@@ -395,8 +395,8 @@
 <nav>
   <a class="logo" onclick="showHome()">Doğukan Şahin</a>
   <ul class="nav-links">
-    <li><a onclick="showHome(); scrollToSection('works')">Work</a></li>
     <li><a onclick="showHome(); scrollToSection('about')">About</a></li>
+    <li><a onclick="showHome(); scrollToSection('works')">Work</a></li>
     <li><a onclick="showHome(); scrollToSection('contact')">Contact</a></li>
   </ul>
 </nav>
@@ -405,7 +405,7 @@
 <div id="home-page" class="page active">
 
   <section class="hero">
-    <div class="hero-bg" style="background-image:url('p6_cover.png')"></div>
+    <div class="hero-bg" id="heroBg" style="background-image:url('p6_cover.png')"></div>
     <h1 class="hero-title">Portfolio<span class="dot">.</span></h1>
     <div class="hero-meta">
       <span class="name">Doğukan Şahin — Visual Communication Design · Mehmet Akif Ersoy University</span>
@@ -471,8 +471,8 @@
   <section class="contact" id="contact">
     <div>
       <h2 class="contact-heading">
-        <span class="muted">Birlikte</span><br>
-        çalışalım<span style="color:#333">.</span>
+        <span class="muted">Let's work</span><br>
+        together<span style="color:#333">.</span>
       </h2>
     </div>
     <div class="contact-details">
@@ -506,7 +506,7 @@
 <div id="detail-page" class="page">
 
   <button class="detail-back" onclick="showHome()">
-    <span>←</span> Tüm işler
+    <span>←</span> All Work
   </button>
 
   <div class="detail-hero">
@@ -733,6 +733,17 @@ const projects = [
 }
 renderProjectCards();
 
+// Hero video banner — boş bırak, şu anki görsel kapak kalır.
+// Video eklemek istersen tırnak içine dosya adını/linkini yaz, örn: 'hero-video.mp4'
+const heroVideo = '';
+if (heroVideo) {
+  const heroBg = document.getElementById('heroBg');
+  heroBg.style.backgroundImage = 'none';
+  heroBg.innerHTML = `<video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;">
+    <source src="${heroVideo}">
+  </video>`;
+}
+
 let currentProject = 0;
 let savedScrollY = 0;
 
@@ -841,7 +852,12 @@ function showDetail(index) {
   document.getElementById('next-project').style.pointerEvents = next ? 'auto' : 'none';
   document.getElementById('home-page').classList.remove('active');
   document.getElementById('detail-page').classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const htmlEl = document.documentElement;
+  const prevBehaviorIn = htmlEl.style.scrollBehavior;
+  htmlEl.style.scrollBehavior = 'auto';
+  htmlEl.scrollTop = 0;
+  document.body.scrollTop = 0;
+  htmlEl.style.scrollBehavior = prevBehaviorIn;
 }
 
 function navProject(dir) {
@@ -863,7 +879,13 @@ function showHome() {
 function scrollToSection(id) {
   setTimeout(() => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (el) {
+      const htmlEl = document.documentElement;
+      const prevBehaviorSec = htmlEl.style.scrollBehavior;
+      htmlEl.style.scrollBehavior = 'auto';
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      htmlEl.style.scrollBehavior = prevBehaviorSec;
+    }
   }, 50);
 }
 
@@ -943,9 +965,16 @@ function scrollToSection(id) {
   }
 
   function openGaleriAt(src) {
-    openGaleri();
+    galeriImgs = shuffle(allShowcaseImgs);
+    const grid = document.getElementById('galeriGrid');
+    grid.innerHTML = galeriImgs.map((img, i) =>
+      `<div class="galeri-cell" onclick="openLightbox(${i})">
+        <img src="${img.src}" alt="${img.alt}" loading="lazy">
+      </div>`
+    ).join('');
     const idx = galeriImgs.findIndex(i => i.src === src);
-    if (idx >= 0) { setTimeout(() => openLightbox(idx), 50); }
+    document.body.style.overflow = 'hidden';
+    openLightbox(idx >= 0 ? idx : 0);
   }
 
   function closeGaleri() {
@@ -963,6 +992,9 @@ function scrollToSection(id) {
 
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
+    if (!document.getElementById('galeriOverlay').classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
   }
 
   function lightboxNav(dir) {
